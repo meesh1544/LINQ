@@ -28,44 +28,50 @@ namespace LINQ
                 new famousPeople() {Name = "Frances Allen", BirthYear=1932,DeathYear=2020 },
                 new famousPeople() {Name = "Bill Gates", BirthYear=1955 }
      };
-    var nineteenHundred = famousList.Where(n => n.BirthYear > 1899)
-        .OrderBy(n => n.BirthYear).ToList<famousPeople>();
-            Console.WriteLine("Stem influencers born after the 1900's");
+            Console.WriteLine("-Stem influencers born after the 1900's-");
+            var nineteenHundred = from s in famousList
+                                  where s.BirthYear > 1900
+                                  select s;
             foreach (var n in nineteenHundred)
             {
                 Console.WriteLine($"{n.Name}\nBorn: {n.BirthYear}");
                 Console.WriteLine("---------------------------");
             }
-
-    var nineteenHundred2 = famousList.Where(n => (n.BirthYear >1920 && n.BirthYear <2000))
-        .OrderBy(n => n.BirthYear).ToList<famousPeople>();
-            Console.WriteLine("Stem influencers born beween 1920 and 2000");
+    
+            Console.WriteLine("-Stem influencers born beween 1920 and 2000-");
+            var nineteenHundred2 = from b in famousList
+                                   where b.BirthYear > 1920 && b.BirthYear < 2000
+                                   select b;
             foreach (var n in nineteenHundred2)
             {
                 Console.WriteLine($"{n.Name}\nBorn: {n.BirthYear}");
                 Console.WriteLine("---------------------------");
             }
-
-    var nineteenHundred3 = famousList.Where(n=>n.Name.Contains("ll"))
-         .OrderBy(n => n.Name);
-            Console.WriteLine("Stem influencers with ll in their name.");
+    
+            Console.WriteLine("-Stem influencers with ll in their name.-");
+            var nineteenHundred3 = from n in famousList
+                                   where n.Name.Contains("ll")
+                                   select n;
             foreach (var n in nineteenHundred3)
             {
             Console.WriteLine($"{n.Name}");
             Console.WriteLine("---------------------------");
             }
-    var nineteenHundred4 = famousList.Where(n => n.BirthYear > 1950)
-            .OrderBy(n => n.BirthYear).ToList<famousPeople>();
-            Console.WriteLine("Stem influencers born after the 1950's");
-            foreach (var n in nineteenHundred4)
+    
+            Console.WriteLine("-Stem influencers born after the 1950's-");
+            var nineteenHundred4 = from b in famousList
+                                   where b.BirthYear > 1950
+                                   select b;
+            foreach (var b in nineteenHundred4)
             {
-                Console.WriteLine($"{n.Name}\nBorn: {n.BirthYear}");
+                Console.WriteLine($"{b.Name}\nBorn: {b.BirthYear}");
                 Console.WriteLine("---------------------------");
             }
 
-    var nineteenHundred5 = famousList.Where(n=> n.DeathYear >1960 && n.DeathYear < 2015)
-            .OrderByDescending(n=> n.DeathYear).ToList<famousPeople>();
-            Console.WriteLine("Stem influencers who died between 1960 and 2015");
+            Console.WriteLine("-Stem influencers who died between 1960 and 2015-");
+            var nineteenHundred5 = from n in famousList
+                                   where n.DeathYear > 1960 && n.DeathYear < 2015
+                                   select n;
             foreach (var n in nineteenHundred5)
             {
                 Console.WriteLine($"{n.Name}\nDied: {n.DeathYear}");
